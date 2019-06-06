@@ -5,7 +5,7 @@ const axios = require('axios');
 async function writeToJSON() {
   let times = 1;
   if (fs.existsSync('cron/times.txt')) {
-    times = fs.readFileSync('cron/times.txt', 'utf8');
+    times = parseInt(fs.readFileSync('cron/times.txt', 'utf8'), 10);
   }
   fs.writeFile('cron/times.txt', parseInt(times + 1, 10), 'utf8', err => {
     if (err) {
